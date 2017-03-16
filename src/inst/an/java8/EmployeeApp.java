@@ -22,6 +22,10 @@ public class EmployeeApp {
 		
 		Map<Long, Employee> deptMaxSalary = new HashMap<>();
 		
+		
+		/**
+		 * Finding max salary in each dept - traditional way
+		 */
 		for(Employee e : eList){
 			if(deptMaxSalary.get(e.getDeptId()) == null){
 				deptMaxSalary.put(e.getDeptId(), e);
@@ -36,6 +40,9 @@ public class EmployeeApp {
 			System.out.println(entry.getKey() + " - " + entry.getValue());
 		}
 		
+		/**
+		 * Finding max salary in each dept - using streams and lambdas
+		 */
 		Comparator<Employee> bySalary = Comparator.comparing(Employee::getSalary);
 		
 		eList.stream().collect(
